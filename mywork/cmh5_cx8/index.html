@@ -1,0 +1,48 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+		<meta name="keywords" content="Mazda CX-8研究所，揭秘DNA再抽惊喜大奖~">
+		<meta name="description" content="Mazda CX-8研究所，揭秘DNA再抽惊喜大奖~">
+		<title>Mazda CX-8，带你领略驾乘愉悦</title>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link href="css/app.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="app">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swp_01">
+						<a href="javascript:;" class="hdjsBtn">活动介绍&gt;</a>
+						<a href="draw.html" class="zjcx" style="display: none;">中奖查询&gt;</a>
+						<div class="jiantou"></div>
+					</div>
+					<div class="swiper-slide swp_02">
+						<a href="javascript:;" class="hdjsBtn">活动介绍&gt;</a>
+						<a href="draw.html" class="zjcx" style="display: none;">中奖查询&gt;</a>
+						<a href="answer.html">
+							<div class="alertBtn">开始揭秘</div>
+						</a>
+					</div>
+				</div>
+				<div class="alert" style="display: none;"><img src="img/huodongjieshao.png">
+					<div class="alertBtn">我知道了</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/iscroll.js"></script>
+		<script type="text/javascript">
+			var swiper = new Swiper('.swiper-container', {
+				pagination: '.swiper-pagination',
+				paginationClickable: true,
+				direction: 'vertical',
+				observer: true,
+				observeParents: true
+			});
+		</script>
+		<script src="js/index.js"></script>
+	</body>
+
+</html>

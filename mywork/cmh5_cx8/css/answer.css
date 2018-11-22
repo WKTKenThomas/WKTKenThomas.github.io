@@ -1,0 +1,347 @@
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+object,
+code,
+em,
+span,
+var,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+a,
+img,
+header,
+footer,
+nav,
+aside,
+audio,
+datalist,
+section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+
+ul,
+ol,
+ul li,
+ol li {
+	list-style: none;
+}
+
+html,
+body {
+	position: relative;
+	height: 100%;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+}
+.swiper-container {
+	width: 100%;
+	height: 160.8vw;
+}
+
+.swiper-slide {
+	position: relative;
+}
+
+.swp_01 {
+	background: url(img/swp_01.a0bb541.png) no-repeat;
+	background-size: 100%;
+}
+
+.swp_02 {
+	background: url(img/swp_02.7890877.png) no-repeat;
+	background-size: 100%;
+}
+
+.jiantou {
+	position: absolute;
+	width: 6.4vw;
+	height: 3.07vw;
+	left: 50%;
+	bottom: 0.67vw;
+	margin-left: -3.2vw;
+	background-position: -19.2vw -7.73vw;
+	animation: jiantou 1s infinite;
+	-webkit-animation: jiantou 1s infinite;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAVBAMAAADLKsFqAAAAMFBMVEUAAAD///////////////////////////////////////////////////////////87TQQwAAAAD3RSTlMAoCAQ8IDgYMBAMFBw0JDfYqFyAAAAu0lEQVQY02XOsQ7BYBSG4RMGQSQiBpsaultsEjF0ZeACLMJWiaSJyQUYysZVcCeuRYg0XT5/e/T/mvYMZ3if5ORIayHlcdty/5RhgLccYYEZsVT6FphnjhCYvaEIoZANdIFOMTfNri4zuABrEyoPmXg5uAKb9PJKnrDAjDg5OHUUeibzDwOvBAJobmTvufMUJMDJ7Hpovx794aD5u9dM0LzTaIGZM/YNMHNqPqJbiIiZAERnBoLmMmxz+QflmXVkJtfUCwAAAABJRU5ErkJggg==);
+	background-size: 6.4vw 3.07vw;
+}
+
+@keyframes jiantou {
+	50% {
+		-webkit-transform: translateY(-2.13vw);
+		transform: translateY(-2.13vw);
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+@-webkit-keyframes jiantou {
+	50% {
+		-webkit-transform: translateY(-2.13vw);
+		transform: translateY(-2.13vw);
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+.swp_02 .alertBtn {
+	position: absolute;
+	width: 30vw;
+	height: 6.66;
+	background: #b01f24;
+	color: #fff;
+	line-height: 6.67vw;
+	font-weight: 1000;
+	text-align: center;
+	font-size: 3.2vw;
+	border-radius: 0.8vw;
+	bottom: 8.2vw;
+	left: 50%;
+	margin-left: -15vw;
+}
+
+.zjcx {
+	position: absolute;
+	bottom: 4.67vw;
+	right: 4.53vw;
+	color: #fff;
+	font-size: 3.2vw;
+}
+.hdjsBtn {
+	position: absolute;
+	top: 17.07vw;
+	right: 4.53vw;
+	color: #fff;
+	font-size: 3.2vw;
+}
+.alert {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.95);
+	z-index: 2;
+}
+
+.alert img {
+	position: absolute;
+	left: 50%;
+	top: 13.33vw;
+	margin-left: -39.34vw;
+	width: 78.67vw;
+	height: 112.67vw;
+}
+
+.alert .alertBtn {
+	position: absolute;
+	width: 30vw;
+	height: 6.66;
+	background: #b01f24;
+	color: #fff;
+	line-height: 6.67vw;
+	font-weight: 1000;
+	text-align: center;
+	font-size: 3.2vw;
+	border-radius: 0.8vw;
+	bottom: 8.2vw;
+	left: 50%;
+	margin-left: -15vw;
+}
+#answer {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	overflow: hidden;
+	background: #e5e5ea;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	-webkit-transition: opacity .25s;
+	transition: opacity .25s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+{
+	opacity: 0;
+}
+
+.content {
+	padding: 6.4vw 0 6.4vw 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #e5e5ea;
+}
+
+.content li {
+	margin: 0 2.66vw 8vw 2.66vw;
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+
+.content li.nomargin {
+	margin: 0;
+	padding: 0;
+}
+
+.content li>img {
+	float: left;
+	width: 11.2vw;
+	height: 11.2vw;
+}
+
+.content li span {
+	padding: 2.66vw;
+	border-radius: 1.33vw;
+	float: left;
+	margin: 0 4vw 0 4vw;
+	border: 1px solid #c7c7c6;
+	max-width: 56.5vw;
+	/* text-overflow: ellipsis;
+	white-space: normal; */
+	word-break: break-all;
+	font-size: 3.73vw;
+	background: #fff;
+}
+
+.content li span>img {
+	width: 100%;
+	height: 26vw;
+}
+
+.content li>img.imgright {
+	float: right;
+}
+
+.content li span.spanright {
+	float: right;
+	background: #a0e75a;
+}
+
+.select {
+	width: 56.8vw;
+	height: 11.2vw;
+	line-height: 11.2vw;
+	padding-left: 2.66vw;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 1.33vw;
+	border: 1px solid #c7c7c6;
+	margin: 1.86vw 0 1.86vw 0;
+	font-size: 3.73vw;
+}
+
+.select.beselect {
+	background: #b01f24;
+	border: 1px solid #b01f24;
+	color: #fff;
+}
+
+.iselect {
+	float: right;
+	width: 3.86vw;
+	height: 3.86vw;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAdCAMAAADMzI+UAAAAxlBMVEUAAADNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3////////////////////////////////Nzc3Nzc3Nzc3////////////////////////////////////////////////////Nzc3////////////////////////////////////////////////////Nzc3////////////////////////Nzc37+/v29vbOzs78/Pzj4+Pd3d3V1dXs7OzX19fr6+svyxGCAAAANnRSTlMA/K4b2dAxCZPxYwYB+hD36uLgbWwyHMW+t5mVi2xDKSQC8K+spnFXSz8U7NvZ09CSgX1ZCgnUzOAqAAABlklEQVQ4y42V15aCMBBAAUEBsffe1rq9zdDR//+phZC4oGC4D56ZE+5hnCSDkMdKnyWyUkeS17iWpU5J4NEfgn5NypKIDFEqPzaPzwAHGlc+RLS9i+WAY108G0W18sDc1wCgR2tV0HZNYJiujUp+1d+RCcvYbKNvQRLLx3aeeyAm9Em1Cp5NSGOeUcmuudcAwiJKVPSJmXZ9VLPMUwti5lFvRduCeyxbzOizMWLrX2EmoQtZuCjdqztgvIU9Em0zUzVt8a5TiwZbnYQd7qIH2XjYvS13QJdac4HUG+SoAUrU0IcGCXS6MjiRVEYrR7VQjrdjALCPgnoTCJuqQNDQyVEd1KLnJ1H8Gj09BcITNQVEyAMxvFz0TXp4XeIejYjJf+snS1pVYUyC4S8Vuf+1x87ArE/O7kudifwOG7O4zuaY/C6vYpF9XbwDo3b8Fwudpp8NUHYJsdgZXk3otiS9ojdnSrpcv1H595W585RWeEoYWxinteKzqbq9KZc3EflU1GgOB2QOB3QO8+BNfz7sm6Ohlvrm/AGJna82jWnG/gAAAABJRU5ErkJggg==) no-repeat;
+	background-size: 7.73vw 3.86vw;
+	background-position-x: -3.86vw;
+	margin: 3.4vw 2vw 0 0;
+}
+
+.iselect.beiselect {
+	background-position-x: 0;
+}
+
+#answer>ul>li>span.title {
+	background: #cecece;
+	border-radius: 1.33vw;
+	color: #fff;
+	font-size: 2.93vw;
+	padding: 1.33vw;
+	margin-left: 39.73vw !important;
+	border: 0;
+}
+
+video {
+	width: 100%;
+	/* height: 43vw; */
+}
+
+audio {
+	display: none;
+}
+#cjBtn {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 18vw;
+	border: 1px solid #e5e5ea;
+	background: #f4f4f6;
+	z-index: 20;
+}
+
+#cjBtn div {
+	height: 12.26vw;
+	line-height: 12.26vw;
+	width: 94.4vw;
+	background: #b01f24;
+	border: 1px solid #63080b;
+	border-radius: 1.06vw;
+	text-align: center;
+	margin: 2.66vw auto;
+	color: #fff;
+	font-weight: bold;
+	font-size: 4.53vw;
+}
+
+.cjBtn-enter-active,
+.cjBtn-leave-active {
+	-webkit-transition: opacity .5s;
+	transition: opacity .5s;
+}
+
+.cjBtn-enter,
+.cjBtn-leave-to
+
+{
+	opacity: 0;
+}
