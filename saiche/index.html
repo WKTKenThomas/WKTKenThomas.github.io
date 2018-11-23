@@ -217,15 +217,15 @@
 				});
 			},
 			gameover:function(){
-				if(this.gametime<100){
+				if(this.gametime<50){
 					alert("你是女司机吧，成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
-				}else if(this.gametime>=100&&this.gametime<200){
+				}else if(this.gametime>=50&&this.gametime<80){
 					alert("你眼瞎么？成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
-				}else if(this.gametime>=200&&this.gametime<300){
+				}else if(this.gametime>=80&&this.gametime<110){
 					alert("还不错~去修车吧~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
-				}else if(this.gametime>=300&&this.gametime<400){
+				}else if(this.gametime>=110&&this.gametime<140){
 					alert("呦呵~厉害呦~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
-				}else if(this.gametime>=400){
+				}else if(this.gametime>=140){
 					alert("老司机~老司机~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
 				}
 			}
