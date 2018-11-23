@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			canvas{width: 100%;height: 100%;}
+			body{background: url(img/back.jpg);background-size: 100%;}
+			div{position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;width: 40vw;height: 10vw;line-height: 10vw;text-align:center;border: 1px solid #000;border-radius:2vw;font-size: 7vw;background: #fff;}
+		</style>
+	</head>
+	<body>
+		<div id="begin">开始游戏</div>
+		<canvas id="canvas" width="320" height="568"></canvas>
+	</body>
+	<script type="text/javascript">
+		//障碍物类
+		class Obstacle{
+			constructor(id,left){
+				this.id = id;
+				this.left = left;
+				this.img = window.document.createElement("img");
+				this.t = -30;
+			}
+			move(){
+				this.t+=game.speed;
+				game.c.drawImage(this.img,this.left,this.t,this.img.width/2.5,this.img.height/2.5);
+				if(this.t>game.canvas.height){
+					delete game.ObsObj[this.id];
+				}else if(game.collision({
+					l:this.left,
+					t:this.t,
+					w:this.img.width/2.5,
+					h:this.img.height/2.5
+				},{
+					l:game.carleft,
+					t:380,
+					w:game.carimg.width/3,
+					h:game.carimg.height/3
+				})){
+					clearInterval(game.timer);
+					game.gameover();
+				}
+			}
+		}
+		class Obs1 extends Obstacle{
+			constructor(id,left){
+				super(id,left)
+				this.img.src = "./img/hind1.png";
+			}
+		}
+		class Obs2 extends Obstacle{
+			constructor(id,left){
+				super(id,left)
+				this.img.src = "./img/hind2.png";
+			}
+		}
+		class Obs3 extends Obstacle{
+			constructor(id,left){
+				super(id,left)
+				this.img.src = "./img/hind3.png";
+			}
+		}
+		
+		
+		var game = {
+			canvas:document.getElementById("canvas"),
+			c:this.canvas.getContext("2d"),
+			t:-1520,
+			speed:1.2,
+			pinglv:10,
+			carleft:138,
+			gametime:0,
+			ObsObj:{},
+			begin:document.getElementById("begin"),
+			init:function(){
+				this.draw();
+				this.touchmove();
+				var that = this;
+				this.begin.onclick = function(){
+					this.remove();
+					that.timer = setInterval(function(){
+						//清除画面
+						that.c.clearRect(0,0,canvas.width,canvas.height);
+						//背景
+						that.back();
+						//创建障碍频率
+						--that.pinglv;
+						if(that.pinglv==0){
+							that.randomObs();
+							that.pinglv = that.gamepinglv();
+						}
+						//障碍物
+						for(var item in that.ObsObj){
+							that.ObsObj[item].move();
+						}
+						//汽车
+						that.car();
+						//时间
+						that.playertime();
+					},10)
+				}
+			},
+			draw:function(){
+				this.carimg = document.createElement("img");
+				this.carimg.src = "./img/car.png";
+				
+				this.bgimg = document.createElement("img");
+				this.bgimg.src = "./img/back.jpg";
+			},
+			car:function(){
+				this.c.drawImage(this.carimg,this.carleft,380,this.carimg.width/3,this.carimg.height/3);
+			},
+			playertime:function(){
+				this.gametime+=0.01;
+				this.c.font="20px Verdana";
+				this.c.fillText(this.gametime.toFixed(2)+"s",3,20);
+			},
+			back:function(){
+				this.t+=this.speed;
+				this.t = this.t>=0?-1520:this.t;
+				this.c.drawImage(this.bgimg,0,this.t+1520,this.canvas.width,1520);
+				this.c.drawImage(this.bgimg,0,this.t,this.canvas.width,1520);
+			},
+			randomObs:function(){
+				var rn = Math.random();
+				var rnum = parseInt(1+Math.random()*6);
+				switch (rnum){
+					case 1:
+						this.ObsObj[rn] = new Obs1(rn,140);
+						this.ObsObj[rn+1] = new Obs2(rn+1,210);
+						break;
+					case 2:
+						this.ObsObj[rn] = new Obs3(rn,70);
+						this.ObsObj[rn+1] = new Obs1(rn+1,140);
+						break;
+					case 3:
+						this.ObsObj[rn] = new Obs2(rn,210);
+						this.ObsObj[rn+1] = new Obs3(rn+1,70);
+						break;
+					case 4:
+						this.ObsObj[rn] = new Obs2(rn,140);
+						this.ObsObj[rn+1] = new Obs2(rn+1,70);
+						break;
+					case 5:
+						this.ObsObj[rn] = new Obs1(rn,70);
+						this.ObsObj[rn+1] = new Obs1(rn+1,210);
+						break;
+					case 6:
+						this.ObsObj[rn] = new Obs3(rn,210);
+						this.ObsObj[rn+1] = new Obs3(rn+1,140);
+						break;
+				}
+			},
+			gamepinglv:function(){
+				var rnum = parseInt(1+Math.random()*10);
+				switch (rnum){
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+						return 155;
+					case 5:
+					case 6:
+						return 170;
+					case 7:
+					case 8:
+					case 9:
+					case 10:
+						return 140;
+				}
+			},
+			collision:function(obj1,obj2){
+				var l1 = obj1.l>obj2.l+obj2.w;
+				var l2 = obj2.l>obj1.l+obj1.w;
+				var t1 = obj1.t>obj2.t+obj2.h;
+				var t2 = obj2.t>obj1.t+obj1.h;
+				if(!(l1||l2||t1||t2)){
+					return true;
+				}else{
+					return false;
+				}
+			},
+			touchmove:function(){
+				var that = this;
+		    	document.addEventListener("touchstart", function(e) {
+					startX = e.changedTouches[0].pageX,
+					startY = e.changedTouches[0].pageY;
+				});
+				document.addEventListener("touchend", function(e) {
+					moveEndX = e.changedTouches[0].pageX,
+					moveEndY = e.changedTouches[0].pageY,
+					X = moveEndX - startX,
+					Y = moveEndY - startY;
+					var num = 7;
+					if ( X > 0 ) {
+						that.moveR = setInterval(function(){
+							if(num!=0&&that.carleft<208){
+								num--;
+								that.carleft+=10;
+							}else{
+								clearInterval(that.moveR);
+							}
+						},15)
+					}
+					else if ( X < 0 ) {
+						that.moveL = setInterval(function(){
+							if(num!=0&&that.carleft>68){
+								num--;
+								that.carleft-=10;
+							}else{
+								clearInterval(that.moveL);
+							}
+						},15)
+					}
+				});
+			},
+			gameover:function(){
+				if(this.gametime<100){
+					alert("你是女司机吧，成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
+				}else if(this.gametime>=100&&this.gametime<200){
+					alert("你眼瞎么？成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
+				}else if(this.gametime>=200&&this.gametime<300){
+					alert("还不错~去修车吧~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
+				}else if(this.gametime>=300&&this.gametime<400){
+					alert("呦呵~厉害呦~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
+				}else if(this.gametime>=400){
+					alert("老司机~老司机~成绩为"+this.gametime.toFixed(2)+"s");window.location.reload();
+				}
+			}
+		}
+		game.init();
+		
+	</script>
+</html>
