@@ -24,8 +24,8 @@ class Obstacle {
 				{
 					l: this.left,
 					t: this.t,
-					w: this.img.width,
-					h: this.img.height
+					w: this.img.width * 1.4,
+					h: this.img.height * 1.4
 				},
 				{
 					l: game.carleft,
