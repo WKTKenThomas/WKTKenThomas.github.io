@@ -15,6 +15,11 @@
 		<canvas id="canvas" width="320" height="568"></canvas>
 	</body>
 	<script type="text/javascript">
+		//浏览器兼容
+		var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+									window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+		var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
 		//障碍物类
 		class Obstacle{
 			constructor(id,left){
@@ -39,7 +44,7 @@
 					w:game.carimg.width/3,
 					h:game.carimg.height/3
 				})){
-					clearInterval(game.timer);
+					raf = function(){};
 					game.gameover();
 				}
 			}
@@ -63,6 +68,30 @@
 			}
 		}
 		
+		function animate(){
+			//清除画面
+			game.c.clearRect(0,0,canvas.width,canvas.height);
+			//背景
+			game.back();
+			//创建障碍频率
+			--game.pinglv;
+			if(game.pinglv==0){
+				game.randomObs();
+				game.pinglv = game.gamepinglv();
+			}
+			//障碍物
+			for(var item in game.ObsObj){
+				game.ObsObj[item].move();
+			}
+			//汽车
+			game.car();
+			//时间
+			game.playertime();
+			raf();
+		}
+		var raf = function(){
+			requestAnimationFrame(animate);
+		}
 		
 		var game = {
 			canvas:document.getElementById("canvas"),
@@ -80,26 +109,7 @@
 				var that = this;
 				this.begin.onclick = function(){
 					this.remove();
-					that.timer = setInterval(function(){
-						//清除画面
-						that.c.clearRect(0,0,canvas.width,canvas.height);
-						//背景
-						that.back();
-						//创建障碍频率
-						--that.pinglv;
-						if(that.pinglv==0){
-							that.randomObs();
-							that.pinglv = that.gamepinglv();
-						}
-						//障碍物
-						for(var item in that.ObsObj){
-							that.ObsObj[item].move();
-						}
-						//汽车
-						that.car();
-						//时间
-						that.playertime();
-					},10)
+					animate();
 				}
 			},
 			draw:function(){
@@ -113,7 +123,7 @@
 				this.c.drawImage(this.carimg,this.carleft,380,this.carimg.width/3,this.carimg.height/3);
 			},
 			playertime:function(){
-				this.gametime+=0.01;
+				this.gametime+=0.0167;//requestAnimationFrame,0.167更新一次
 				this.c.font="20px Verdana";
 				this.c.fillText(this.gametime.toFixed(2)+"s",3,20);
 			},
@@ -160,7 +170,7 @@
 					case 2:
 					case 3:
 					case 4:
-						return 155;
+						return 160;
 					case 5:
 					case 6:
 						return 170;
@@ -168,7 +178,7 @@
 					case 8:
 					case 9:
 					case 10:
-						return 140;
+						return 150;
 				}
 			},
 			collision:function(obj1,obj2){
